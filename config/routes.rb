@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'welcome/about'
 
-  resources :applications
+  resources :registered_applications
 
   root to: 'welcome#index'
 end
