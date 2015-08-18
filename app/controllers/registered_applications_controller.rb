@@ -10,6 +10,7 @@ class RegisteredApplicationsController < ApplicationController
   # GET /registered_applications/1
   # GET /registered_applications/1.json
   def show
+    @registered_application = RegisteredApplication.find(params[:id])
   end
 
   # GET /registered_applications/new
@@ -19,7 +20,7 @@ class RegisteredApplicationsController < ApplicationController
 
   # GET /registered_applications/1/edit
   def edit
-    @registered_application = RegisteredApplication.find(registered_application_params)
+    @registered_application = RegisteredApplication.find(params[:id])
   end
 
   # POST /registered_applications
