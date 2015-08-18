@@ -1,2 +1,14 @@
-<h1>Blocmetrics</h1>
-<p>Track events from multiple applications</p>
+<div class="container">
+  <div class="jumbotron">
+    <h1 align="center">Blocmetrics</h1> 
+    <p align="center">Track events from multiple applications</p> 
+  </div>
+</div>
+<div class="container" align="center">
+	<div "col-lg-4">
+	<p><%= button_to "Sign Up", new_user_registration_path, :class => "btn btn-lg btn-primary", :style => "center", :method => :get %></p>
+	</div>
+	<div "col-lg-4">
+	<p><%= button_to "Log In", new_user_session_path, :class => "btn btn-lg btn-primary", :method => :get %></p>
+	</div>
+</div>
