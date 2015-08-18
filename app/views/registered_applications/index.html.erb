@@ -1,0 +1,32 @@
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th colspan="5"><h1 align="center">Registered Applications</h1></th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>URL</th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @registered_applications.each do |registered_application| %>
+      <tr>
+        <td><%= registered_application.name %></td>
+        <td><a href="<%= registered_application.url %>"><%= registered_application.url %></a></td>
+        <td><%= link_to 'Show', registered_application %></td>
+        <td><%= link_to 'Edit', edit_registered_application_path(registered_application) %></td>
+        <td><%= link_to 'Destroy', registered_application, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <th colspan="5" align="center"><%= link_to 'Register A New Application', new_registered_application_path, class: 'btn btn-lg btn-success center-block' %></th>
+  </tfoot>
+</table>

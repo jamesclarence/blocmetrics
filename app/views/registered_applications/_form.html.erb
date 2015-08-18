@@ -1,0 +1,29 @@
+<%= form_for(@registered_application) do |f| %>
+  <% if @registered_application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@registered_application.errors.count, "error") %> prohibited this registered_application from being saved:</h2>
+
+      <ul>
+      <% @registered_application.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :application_name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :web_site %><br />
+    <%= f.url_field :url, autofocus: true %>
+  </div>
+
+  </br>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
