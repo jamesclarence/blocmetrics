@@ -1,5 +1,5 @@
 class RegisteredApplicationsController < ApplicationController
-  before_action :set_registered_application, only: [:show, :edit, :update, :destroy]
+  # before_action :set_registered_application, only: [:show, :edit, :update, :destroy]
 
   # GET /registered_applications
   # GET /registered_applications.json
@@ -19,6 +19,7 @@ class RegisteredApplicationsController < ApplicationController
 
   # GET /registered_applications/1/edit
   def edit
+    @registered_application = RegisteredApplication.find(registered_application_params)
   end
 
   # POST /registered_applications
@@ -54,6 +55,8 @@ class RegisteredApplicationsController < ApplicationController
   # DELETE /registered_applications/1
   # DELETE /registered_applications/1.json
   def destroy
+    @registered_application = RegisteredApplication.find(params[:id])
+
     @registered_application.destroy
     respond_to do |format|
       format.html { redirect_to registered_applications_url, notice: 'Registered application was successfully destroyed.' }
@@ -62,13 +65,18 @@ class RegisteredApplicationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_registered_application
-      @registered_application = RegisteredApplication.find(params[:id])
+    
+    def registered_application_params
+      params.require(:registered_application).permit(:name, :url)
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def registered_application_params
-      params[:registered_application]
-    end
+    # # Use callbacks to share common setup or constraints between actions.
+    # def set_registered_application
+    #   @registered_application = RegisteredApplication.find(params[:id])
+    # end
+
+    # # Never trust parameters from the scary internet, only allow the white list through.
+    # def registered_application_params
+    #   params[:registered_application]
+    # end
 end
