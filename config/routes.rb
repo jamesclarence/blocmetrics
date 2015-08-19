@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'welcome/about'
 
   resources :registered_applications do
-    resources :events
+    resources :events, except: [:index, :show]
   end
 
   root to: 'welcome#index'

@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
-  def index
-    @events = Event.all
+  def index 
+    @registered_application = RegisteredApplication.find(params[:registered_application_id])
+    @events = @registered_application.events
   end
 
   def show
@@ -16,8 +17,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
     @registered_application = RegisteredApplication.find(params[:registered_application_id])
+    @event = Event.new(event_params)
+    @event.registered_application = @registered_application
 
     if @event.save
       flash[:notice] = "Event saved to your application tracker"
@@ -32,6 +34,15 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:id])
+    @registered_application = RegisteredApplication.find(params[:registered_application_id])
+
+    if @event.destroy
+      flash[:notice] = "Event #{@event.name} has been deleted."
+      redirect_to @registered_application
+    else
+      flash[:notice] = "Error deleting event"
+    end
   end
 
   private

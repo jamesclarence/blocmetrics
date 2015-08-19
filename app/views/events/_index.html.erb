@@ -1,23 +1,25 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th colspan="5"><h1 align="center"><%= RegisteredApplication.name %>'s Events</h1></th>
+      <th colspan="5"><h1 align="center"><%= @registered_application.name %>'s Events</h1></th>
     </tr>
     <tr>
       <th>Event</th>
       <th>Count</th>
+      <th>Delete Event</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @events.each do |event| %>
+    <% @registered_application.events.each do |event| %>
       <tr>
         <td><%= event.name %></td>
         <td><%= event.count %></td>
+        <td><%= link_to "Delete", registered_application_event_path(@registered_application.id, event.id), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure you want to delete this event?' } %></td>
       </tr>
     <% end %>
   </tbody>
   <tfoot>
-    <th colspan="5" align="center"><%= link_to 'Add An Event To Track', new_registered_application_event_path, class: 'btn btn-lg btn-success center-block' %></th>
+    <th colspan="5" align="center"><%= link_to 'Add An Event To Track', new_registered_application_event_path(@registered_application), class: 'btn btn-lg btn-success center-block' %></th>
   </tfoot>
 </table>
