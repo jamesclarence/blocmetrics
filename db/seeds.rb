@@ -4,7 +4,8 @@ require 'faker'
 10.times do
   user = User.new(
     email: Faker::Internet.email,
-    password: Faker::Internet.password(8) 
+    password: Faker::Internet.password(8),
+    role: 'standard' 
     )
     user.skip_confirmation!
     user.save!
@@ -20,7 +21,7 @@ end
 end
 
 # Create Events
-75.times do
+150.times do
     event = Event.create(
         name: Faker::Hacker.noun,
         count: Faker::Number.between(1, 100),
@@ -31,7 +32,8 @@ end
 # Create an admin
 admin = User.new(
     email:      'admin@example.com',
-    password:   'helloworld'
+    password:   'helloworld',
+    role:       'admin'
 )
 admin.skip_confirmation!
 admin.save!
@@ -39,7 +41,8 @@ admin.save!
 # Create a member
 member = User.new(
     email:      'member@example.com',
-    password:   'helloworld'
+    password:   'helloworld',
+    role:       'standard'
 )
 member.skip_confirmation!
 member.save!
