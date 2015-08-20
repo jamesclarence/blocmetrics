@@ -3,6 +3,7 @@
 	<p align="center"><a href="<%= @registered_application.url %>"><%= @registered_application.url %></a></p> 
 </div>
 
+<%= render "events/index" %>
 
 <%= link_to 'Edit This Application', edit_registered_application_path %> |
 <%= link_to 'Back To Applications', registered_applications_path %>

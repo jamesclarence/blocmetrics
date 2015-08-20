@@ -1,5 +1,3 @@
-
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -10,7 +8,7 @@
       <th>URL</th>
       <th>Show</th>
       <th>Edit</th>
-      <th>Delete</th>
+      <th>Delete App</th>
     </tr>
   </thead>
 
@@ -21,8 +19,7 @@
         <td><a href="<%= registered_application.url %>"><%= registered_application.url %></a></td>
         <td><%= link_to 'Show', registered_application %></td>
         <td><%= link_to 'Edit', edit_registered_application_path(registered_application) %></td>
-        <td><%= link_to 'Destroy', registered_application, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
+        <td><%= link_to 'Delete', registered_application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

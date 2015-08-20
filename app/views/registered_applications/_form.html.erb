@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="field">
     <%= f.label :application_name %><br />
     <%= f.text_field :name, autofocus: true %>

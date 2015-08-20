@@ -1,0 +1,13 @@
+<%= form_for @event, url: {action: "create"} do |f| %>
+
+  <div class="field">
+    <%= f.label :event %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  </br>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

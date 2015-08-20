@@ -4,13 +4,14 @@ class RegisteredApplicationsController < ApplicationController
   # GET /registered_applications
   # GET /registered_applications.json
   def index
-    @registered_applications = RegisteredApplication.all
+    @registered_applications = policy_scope(RegisteredApplication) # RegisteredApplication.all
   end
 
   # GET /registered_applications/1
   # GET /registered_applications/1.json
   def show
     @registered_application = RegisteredApplication.find(params[:id])
+    @events = @registered_application.events.sort_by(&:name)
   end
 
   # GET /registered_applications/new
@@ -68,16 +69,6 @@ class RegisteredApplicationsController < ApplicationController
   private
     
     def registered_application_params
-      params.require(:registered_application).permit(:name, :url)
+      params.require(:registered_application).permit(:name, :url, :user_id)
     end
-
-    # # Use callbacks to share common setup or constraints between actions.
-    # def set_registered_application
-    #   @registered_application = RegisteredApplication.find(params[:id])
-    # end
-
-    # # Never trust parameters from the scary internet, only allow the white list through.
-    # def registered_application_params
-    #   params[:registered_application]
-    # end
 end
