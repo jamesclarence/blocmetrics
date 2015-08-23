@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 describe User do
-  before do
-    @user = User.create()
-  end
+
+  include TestFactories
 
   describe '#admin?' do
     it "assigns the user with a role of admin" do
