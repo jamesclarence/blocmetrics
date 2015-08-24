@@ -5,7 +5,7 @@
     </tr>
     <tr>
       <th>Event</th>
-      <th>Count</th>
+      <th>Date and Time</th>
       <th>Delete Event</th>
     </tr>
   </thead>
@@ -14,7 +14,7 @@
     <% @registered_application.events.each do |event| %>
       <tr>
         <td><%= event.name %></td>
-        <td><%= event.count %></td>
+        <td><%= event.created_at %></td>
         <td><%= link_to "Delete", registered_application_event_path(@registered_application.id, event.id), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure you want to delete this event?' } %></td>
       </tr>
     <% end %>
