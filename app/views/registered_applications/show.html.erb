@@ -3,6 +3,8 @@
 	<p align="center"><a href="<%= @registered_application.url %>"><%= @registered_application.url %></a></p> 
 </div>
 
+<%= pie_chart @registered_application.events.group(:count).count %>
+
 <%= render "events/index" %>
 
 <%= link_to 'Edit This Application', edit_registered_application_path %> |
