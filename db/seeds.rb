@@ -20,11 +20,13 @@ end
     )
 end
 
+event_ideas = ["sign in", "sign out", "create account", "update", "delete", "click article", "add to shopping cart"]
+
 # Create Events
-150.times do
+500.times do
     event = Event.create(
-        name: Faker::Hacker.noun,
-        count: Faker::Number.between(1, 100),
+        name: event_ideas.sample,
+        created_at: Faker::Time.between(7.days.ago, Date.today),
         registered_application: RegisteredApplication.all.sample
         )
 end
